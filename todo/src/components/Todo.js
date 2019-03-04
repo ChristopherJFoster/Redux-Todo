@@ -2,21 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleCompleted, deleteTodo } from '../actions/actions';
 
-class Todo extends React.Component {
-  render() {
-    return (
-      <div className='todo'>
-        <p className='list-number'>{this.props.listNumber}.&nbsp;</p>
-        <p
-          completed={this.props.todo.completed.toString()}
-          onClick={() => this.props.toggleCompleted(this.props.todo.id)}
-        >
-          {this.props.todo.value}
-        </p>
-      </div>
-    );
-  }
-}
+const Todo = ({ todo, listNumber, toggleCompleted, deleteTodo }) => {
+  return (
+    <div className='todo'>
+      <p className='list-number'>{listNumber}.&nbsp;</p>
+      <p
+        completed={todo.completed.toString()}
+        onClick={() => toggleCompleted(todo.id)}
+      >
+        {todo.value}
+      </p>
+      <p
+        className='delete-todo'
+        completed={todo.completed.toString()}
+        onClick={() => deleteTodo(todo.id)}
+      >
+        &nbsp;X
+      </p>
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
   return {

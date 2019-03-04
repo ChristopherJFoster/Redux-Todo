@@ -17,7 +17,6 @@ export const addTodo = todo => {
 };
 
 export const toggleCompleted = id => {
-  console.log('toggleCompleted');
   return {
     type: TOGGLE_COMPLETED,
     payload: id
@@ -25,7 +24,6 @@ export const toggleCompleted = id => {
 };
 
 export const deleteTodo = id => {
-  console.log('deleteTodo');
   return {
     type: DELETE_TODO,
     payload: id
