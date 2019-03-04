@@ -30,12 +30,15 @@ export default (state = initialState, action) => {
     case ADD_TODO:
       return { todos: [...state.todos, action.payload] };
     case TOGGLE_COMPLETED:
-      console.log(action.payload);
-      return state;
+      let tempTodos = state.todos.map(todo => {
+        if (todo.id === action.payload) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      });
+      return { todos: tempTodos };
     case DELETE_TODO:
-      const tempTodos = state.todos.filter(
-        todo => todo.id !== action.payload.id
-      );
+      tempTodos = state.todos.filter(todo => todo.id !== action.payload.id);
       return { todos: tempTodos };
     default:
       return state;
