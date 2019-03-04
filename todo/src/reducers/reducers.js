@@ -29,8 +29,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return { todos: [...state.todos, action.payload] };
-    // case TOGGLE_COMPLETED:
-    //   return state;
+    case TOGGLE_COMPLETED:
+      return state;
     case DELETE_TODO:
       const tempTodos = state.todos.filter(
         todo => todo.id !== action.payload.id
