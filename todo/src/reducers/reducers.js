@@ -30,6 +30,7 @@ export default (state = initialState, action) => {
     case ADD_TODO:
       return { todos: [...state.todos, action.payload] };
     case TOGGLE_COMPLETED:
+      console.log(action.payload);
       return state;
     case DELETE_TODO:
       const tempTodos = state.todos.filter(

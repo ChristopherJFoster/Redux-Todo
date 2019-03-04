@@ -1,18 +1,30 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { toggleCompleted, deleteTodo } from '../actions/actions';
 
-function Todo(props) {
-  return (
-    <div className="task">
-      <p className="list-number">{props.listNumber}.&nbsp;</p>
-      <p
-        completed={props.completed}
-        id={props.id}
-        onClick={props.toggleCompleted}
-      >
-        {props.task}
-      </p>
-    </div>
-  );
+class Todo extends React.Component {
+  render() {
+    return (
+      <div className='todo'>
+        <p className='list-number'>{this.props.listNumber}.&nbsp;</p>
+        <p
+          completed={this.props.todo.completed.toString()}
+          onClick={() => this.props.toggleCompleted(this.props.todo.id)}
+        >
+          {this.props.todo.value}
+        </p>
+      </div>
+    );
+  }
 }
 
-export default Todo;
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { toggleCompleted, deleteTodo }
+)(Todo);
