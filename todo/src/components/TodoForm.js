@@ -1,29 +1,60 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addTodo, deleteCompleted } from '../actions/actions';
 
-const TodoForm = props => {
-  return (
-    <form onSubmit={props.addTask}>
-      <input
-        type='text'
-        value={props.task}
-        name='task'
-        onChange={props.handleChanges}
-        placeholder='new task'
-      />
-      <div className='buttons'>
-        <button className='add-task' type='submit'>
-          Add Task
-        </button>
-        <button
-          className='clear-completed'
-          type='button'
-          onClick={props.clearCompleted}
-        >
-          Clear Completed
-        </button>
-      </div>
-    </form>
-  );
+class TodoForm extends React.Component {
+  state = { todo: '' };
+
+  changeHandler = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  submitTodo = e => {
+    e.preventDefault();
+    this.props.addTodo(this.state.todo);
+    this.setState({
+      todo: ''
+    });
+  };
+
+  render() {
+    return (
+      <form onSubmit={e => this.submitTodo(e)}>
+        <input
+          type='text'
+          value={this.state.todo}
+          name='todo'
+          onChange={this.changeHandler}
+          placeholder='new todo'
+          required
+        />
+        <div className='buttons'>
+          <button className='add-todo' type='submit'>
+            Add Todo
+          </button>
+          <button
+            className='delete-completed'
+            type='button'
+            onClick={this.props.deleteCompleted}
+          >
+            Delete Completed
+          </button>
+        </div>
+      </form>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
 };
 
-export default TodoForm;
+export default connect(
+  mapStateToProps,
+  { addTodo, deleteCompleted }
+)(TodoForm);

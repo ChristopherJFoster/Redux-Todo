@@ -3,9 +3,9 @@ import uuid from 'uuid';
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 export const DELETE_TODO = 'DELETE_TODO';
+export const DELETE_COMPLETED = 'DELETE_COMPLETED';
 
 export const addTodo = todo => {
-  console.log('addTodo');
   return {
     type: ADD_TODO,
     payload: {
@@ -28,4 +28,8 @@ export const deleteTodo = id => {
     type: DELETE_TODO,
     payload: id
   };
+};
+
+export const deleteCompleted = () => {
+  return { type: DELETE_COMPLETED };
 };

@@ -174,12 +174,12 @@ button {
   border-radius: 6px;
   font-size: 2.5em;
 }
-.add-task {
+.add-todo {
   margin-right: 20px;
   color: #ff9380;
   border: 2px dashed #a680ff;
 }
-.clear-completed {
+.delete-completed {
   color: #de7863;
   border: 2px dashed #a680ff;
 }
