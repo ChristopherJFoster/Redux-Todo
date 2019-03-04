@@ -127,19 +127,24 @@ table {
   border-spacing: 0;
 }
 body {
+  margin: 0 auto;
   font-size: 62.5%;
+  min-width: 400px;
   max-width: 600px;
   font-family: 'B612', sans-serif;
 }
 .container {
+  display: block;
   border-radius: 8px;
-  margin: 20px;
+  margin: 40px;
   padding: 20px;
   border: 7px dashed #ffd380;
   background-color: #80ffcc;
   color: #ff9380;
-  width: 100%;
   user-select: none;
+}
+.todo-form {
+  margin: 20px 0;
 }
 h1 {
   color: #a680ff;
@@ -182,9 +187,6 @@ button {
 .delete-completed {
   color: #de7863;
   border: 2px dashed #a680ff;
-}
-.todo-list {
-  margin-bottom: 12px;
 }
 .list-number {
   color: #a680ff;
