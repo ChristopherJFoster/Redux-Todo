@@ -1,9 +1,5 @@
 import { ADD_TODO, TOGGLE_COMPLETED, DELETE_TODO } from '../actions/actions';
 
-import uuid from 'uuid';
-
-const newId = uuid.v4();
-
 const initialState = {
   todos: [
     {
