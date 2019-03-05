@@ -43,8 +43,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       let tempTodos = [...state.todos, action.payload];
-      writeToLocalStorage({ todos: tempTodos });
-      return { todos: tempTodos };
+      writeToLocalStorage({ ...state, todos: tempTodos });
+      return { ...state, todos: tempTodos };
     case TOGGLE_COMPLETED:
       tempTodos = state.todos.map(todo => {
         if (todo.id === action.payload) {
@@ -52,16 +52,16 @@ export default (state = initialState, action) => {
         }
         return todo;
       });
-      writeToLocalStorage({ todos: tempTodos });
-      return { todos: tempTodos };
+      writeToLocalStorage({ ...state, todos: tempTodos });
+      return { ...state, todos: tempTodos };
     case DELETE_TODO:
       tempTodos = state.todos.filter(todo => todo.id !== action.payload);
-      writeToLocalStorage({ todos: tempTodos });
-      return { todos: tempTodos };
+      writeToLocalStorage({ ...state, todos: tempTodos });
+      return { ...state, todos: tempTodos };
     case DELETE_COMPLETED:
       tempTodos = state.todos.filter(todo => todo.completed === false);
-      writeToLocalStorage({ todos: tempTodos });
-      return { todos: tempTodos };
+      writeToLocalStorage({ ...state, todos: tempTodos });
+      return { ...state, todos: tempTodos };
     default:
       return state;
   }
