@@ -6,7 +6,7 @@ import TodoForm from './components/TodoForm';
 const App = () => {
   return (
     <div className='container'>
-      <h1>To Do List</h1>
+      <h1>To Do List (Redux)</h1>
       <TodoForm />
       <TodoList />
     </div>
