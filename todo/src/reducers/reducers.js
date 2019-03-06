@@ -1,5 +1,3 @@
-import uuid from 'uuid';
-
 import {
   ADD_TODO,
   TOGGLE_COMPLETED,
@@ -44,10 +42,7 @@ const writeToLocalStorage = state => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      let tempTodos = [
-        ...state.todos,
-        { id: uuid.v4(), value: action.payload, completed: false }
-      ];
+      let tempTodos = [...state.todos, { ...action.payload, completed: false }];
       writeToLocalStorage({ ...state, todos: tempTodos });
       return { ...state, todos: tempTodos };
     case TOGGLE_COMPLETED:
